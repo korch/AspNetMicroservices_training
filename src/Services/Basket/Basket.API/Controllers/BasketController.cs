@@ -22,16 +22,16 @@ namespace Basket.API.Controllers
         }
 
         [HttpGet("{userName}", Name = "GetBasket")]
-        [ProducesResponseType(typeof(ShoppingCard), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ShoppingCard>> GetBasket(string userName)
+        [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ShoppingCart>> GetBasket(string userName)
         {
             var basket = await _repository.GetBasket(userName);
-            return Ok(basket ?? new ShoppingCard(userName));
+            return Ok(basket ?? new ShoppingCart(userName));
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(ShoppingCard), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ShoppingCard>> UpdateBasket([FromBody] ShoppingCard basket)
+        [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
         {
             foreach (var item in basket.Items)
             {

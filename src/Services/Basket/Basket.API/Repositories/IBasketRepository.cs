@@ -5,8 +5,8 @@ namespace Basket.API.Repositories
 {
     public interface IBasketRepository
     {
-        Task<ShoppingCard> GetBasket(string userName);
-        Task<ShoppingCard> UpdateBasket(ShoppingCard basket);
+        Task<ShoppingCart> GetBasket(string userName);
+        Task<ShoppingCart> UpdateBasket(ShoppingCart basket);
         Task DeleteBasket(string userName);
     }
 }
