@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Behaviours;
+using Ordering.Application.Features.Orders.Queries.GetOrdersList;
 using System.Reflection;
 
 namespace Ordering.API
@@ -10,9 +11,9 @@ namespace Ordering.API
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(typeof(GetOrdersListQuery).GetTypeInfo().Assembly);
+            services.AddValidatorsFromAssembly(typeof(GetOrdersListQuery).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(GetOrdersListQuery).GetTypeInfo().Assembly);
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
